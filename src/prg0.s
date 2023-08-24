@@ -9,7 +9,7 @@
 ;.setcpu  "6502"                                                               ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
-L000E = $000E
+L000E = $0E
 L0302 = $0302
 L0363 = $0363
 L03A4 = $03A4
@@ -287,7 +287,7 @@ Initialization_stuff:                                                           
     JSR      ConfigureMMC1             ; 0x15b $814B 20 9D BF           ; Set Mapper Parameters at 0x8000
     LDA      #$10                      ; 0x15e $814E A9 10                     ; A = 10
     JSR      SwapCHR                   ; 0x160 $8150 20 B1 BF           ; Set Mapper Parameters at 0xA000
-    JSR      bank7_Turn_Palaces_into_Stone_Bank_1; 0x163 $8153 20 1B E0            ;
+    JSR      bank7_Turn_Palaces_into_Stone_Bank_1 ; 0x163 $8153 20 1B E0            ;
     LDA      #$FC                      ; 0x166 $8156 A9 FC                     ; A = FC
     STA      $81                       ; 0x168 $8158 85 81                     ;
     LDA      #$04                      ; 0x16a $815A A9 04                     ; A = 04

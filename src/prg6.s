@@ -14,7 +14,7 @@
 .include "mmc1.inc"
 .include "variables.inc"
 
-L000E = $000E
+L000E = $0E
 L0302 = $0302
 L0363 = $0363
 L03A4 = $03A4

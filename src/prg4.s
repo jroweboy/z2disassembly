@@ -9,8 +9,8 @@
 ;.setcpu  "6502"                                                               ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
-L0000 = $0000
-L000E = $000E
+L0000 = $00
+L000E = $0E
 L0302 = $0302
 L0363 = $0363
 L03A4 = $03A4
@@ -3873,7 +3873,7 @@ LACAD:                                                                          
     STA      $2A,x                     ; 0x12cc1 $ACB1 95 2A                   ; Enemy Y Position
     LDY      $5F                       ; 0x12cc3 $ACB3 A4 5F                   ; Link's facing direction
     LDA      $072C                     ; 0x12cc5 $ACB5 AD 2C 07                ; Scrolling Offset Low Byte
-    ADC      bank4_table12,y           ; 0x12cc8 $ACB8 79 D0 AC                ;
+    ADC      bank4_table12-1,y           ; 0x12cc8 $ACB8 79 D0 AC                ;
     STA      $4E,x                     ; 0x12ccb $ACBB 95 4E                   ; Enemy X Position (low byte)
     LDA      $072A                     ; 0x12ccd $ACBD AD 2A 07                ; Scrolling Offset High Byte
     ADC      #$00                      ; 0x12cd0 $ACC0 69 00                   ;
@@ -3882,10 +3882,10 @@ LACAD:                                                                          
     STA      $71,x                     ; 0x12cd7 $ACC7 95 71                   ; Enemy X Velocity
     JSR      LDAC7                     ; 0x12cd9 $ACC9 20 C7 DA                ; Set Enemy Y Velocity to 0
     STA      $AF,x                     ; 0x12cdc $ACCC 95 AF                   ;; Various enemy state variables
-bank4_table12 = * + $0002                                                  ;
     JMP      bank7_Determine_Enemy_Facing_Direction_relative_to_Link; 0x12cde $ACCE 4C 91 DC; Determine Enemy Facing Direction
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
+bank4_table12:
 .byt    $EF                            ; 0x12ce1 $ACD1 EF                      ;
 LACD2:                                                                          ;
 .byt    $00,$E8,$18                    ; 0x12ce2 $ACD2 00 E8 18                ;
@@ -5886,7 +5886,7 @@ bank4_Enemy_Init_Routines_Ra_Unicorn_Head:                                      
     STA      $2A,x                     ; 0x13a08 $B9F8 95 2A                   ; Enemy Y Position
     LDY      $5F                       ; 0x13a0a $B9FA A4 5F                   ;; Link's facing direction
     LDA      $072C                     ; 0x13a0c $B9FC AD 2C 07                ; Scrolling Offset Low Byte
-    ADC      bank4_table14,y           ; 0x13a0f $B9FF 79 17 BA                ;
+    ADC      bank4_table14-1,y           ; 0x13a0f $B9FF 79 17 BA                ;
     STA      $4E,x                     ; 0x13a12 $BA02 95 4E                   ; Enemy X position (low byte)
     LDA      $072A                     ; 0x13a14 $BA04 AD 2A 07                ; Scrolling Offset High Byte
     ADC      #$00                      ; 0x13a17 $BA07 69 00                   ;
@@ -5895,10 +5895,10 @@ bank4_Enemy_Init_Routines_Ra_Unicorn_Head:                                      
     STA      $71,x                     ; 0x13a1e $BA0E 95 71                   ; Enemy X Velocity
     JSR      LDAC7                     ; 0x13a20 $BA10 20 C7 DA                ; Set Enemy Y Velocity to 0
     STA      $AF,x                     ; 0x13a23 $BA13 95 AF                   ;; Various enemy state variables
-bank4_table14 = * + $0002                                                  ;
     JMP      bank7_Determine_Enemy_Facing_Direction_relative_to_Link; 0x13a25 $BA15 4C 91 DC; Determine Enemy Facing Direction
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
+bank4_table14:
 .byt    $EF                            ; 0x13a28 $BA18 EF                      ;
 LBA19:                                                                          ;
 .byt    $00,$F0,$10                    ; 0x13a29 $BA19 00 F0 10                ;

@@ -13,8 +13,8 @@
 .include "mmc1.inc"
 .include "variables.inc"
 
-L0000 = $0000
-L000E = $000E
+L0000 = $00
+L000E = $0E
 L02AD = $02AD
 L0302 = $0302
 L0363 = $0363
@@ -2308,7 +2308,7 @@ bank5_Enemy_Init_Routines_Ra:                                                   
     STA      $2A,x                     ; 0x1564f $963F 95 2A                   ;; Enemy Y Position
     LDY      $5F                       ; 0x15651 $9641 A4 5F                   ;; Link's facing direction
     LDA      $072C                     ; 0x15653 $9643 AD 2C 07                ;; Scrolling Offset Low Byte
-    ADC      L965E,y                   ; 0x15656 $9646 79 5E 96                ;
+    ADC      bank5_table11-1,y         ; 0x15656 $9646 79 5E 96                ;
     STA      $4E,x                     ; 0x15659 $9649 95 4E                   ;; Enemy X Position (low byte)
     LDA      $072A                     ; 0x1565b $964B AD 2A 07                ;;link Pagepos SideScroll		; Scrolling Offset High Byte
     ADC      #$00                      ; 0x1565e $964E 69 00                   ;
@@ -2317,7 +2317,6 @@ bank5_Enemy_Init_Routines_Ra:                                                   
     STA      $71,x                     ; 0x15665 $9655 95 71                   ;; Enemy X Velocity
     JSR      LDAC7                     ; 0x15667 $9657 20 C7 DA                ;
     STA      $AF,x                     ; 0x1566a $965A 95 AF                   ;; Various enemy state variables
-L965E     = * + $0002                                                          ;
     JMP      bank7_Determine_Enemy_Facing_Direction_relative_to_Link; 0x1566c $965C 4C 91 DC;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;

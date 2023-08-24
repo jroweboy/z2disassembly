@@ -2,7 +2,7 @@
 .include "mmc1.inc"
 .include "variables.inc"
 
-L000E = $000E
+L000E = $0E
 L0302 = $0302
 L0363 = $0363
 L03A4 = $03A4
@@ -399,7 +399,7 @@ bank7_NMI_Entry_Point:                                                         ;
     DEC      $0501,x                   ; 0x1c18c $C17C DE 01 05                ; decrease all 5xx timers (if > 0)
 :                                                                              ;
     DEX                                ; 0x1c18f $C17F CA                      ;
-    BPL      :-                        ; 0x1c190 $C180 10 F5                   ;
+    BPL      :--                       ; 0x1c190 $C180 10 F5                   ;
     INC      a:$12                     ; 0x1c192 $C182 EE 12 00                ;
     LDX      #$00                      ; 0x1c195 $C185 A2 00                   ; X = 00
     LDY      #$09                      ; 0x1c197 $C187 A0 09                   ; Y = 09
@@ -515,7 +515,7 @@ bank7_pointer_table1:                                                           
 .word    LA329                         ; 0x1c251 $C241 29 A3                   ;
 .word    LA338                         ; 0x1c253 $C243 38 A3                   ;
 .word    L05C9                         ; 0x1c255 $C245 C9 05                   ;
-.word    LD7B0                         ; 0x1c257 $C247 B0 D7                   ;
+.word    (BagoBagoTaskMaybe+1)           ; 0x1c257 $C247 B0 D7                   ;
 ; ---------------------------------------------------------------------------- ;
 bank7_code4:                                                                    ;
     JSR      SwapToSavedPRG; 0x1c259 $C249 20 C9 FF                ; Load Bank $0769
@@ -1525,7 +1525,7 @@ bank7_Pointer_table_for_Small_Objects_Construction_Address:                     
 .word    L812F                         ; 0x1c948 $C938 2F 81                   ;Palaces Type B
 .word    L812F                         ; 0x1c94a $C93A 2F 81                   ;Great Palace
 bank7_Pointer_table_for_location_of_the_4_screens_in_RAM:                       ;
-.word    LD000                         ; 0x1c94c $C93C 00 D0                   ;
+.word    ($d000)                         ; 0x1c94c $C93C 00 D0                   ;
 .word    L70A0                         ; 0x1c94e $C93E A0 70                   ;
 .word    L6060                         ; 0x1c950 $C940 60 60                   ;
 .word    L6261                         ; 0x1c952 $C942 61 62                   ;
@@ -3713,7 +3713,7 @@ LD7A1:                                                                          
     LDA      $051B,x                   ; 0x1d7b9 $D7A9 BD 1B 05                ; Randomizer
     AND      #$01                      ; 0x1d7bc $D7AC 29 01                   ; keep bits .... ...x
     TAY                                ; 0x1d7be $D7AE A8                      ;
-LD7B0     = * + $0001                                                          ;
+BagoBagoTaskMaybe:
     LDA      $072C                     ; 0x1d7bf $D7AF AD 2C 07                ; Scrolling Offset Low Byte
     ADC      bank7_Table_for_Bago_Bago,y; 0x1d7c2 $D7B2 79 8B D7                ;
     STA      $4E,x                     ; 0x1d7c5 $D7B5 95 4E                   ; Enemy X position (low byte)
@@ -6604,10 +6604,10 @@ bank7_Generic_Collision_Test_with_Level_Objects:                                
     STA      $02                       ; 0x1eb26 $EB16 85 02                   ;
     TAY                                ; 0x1eb28 $EB18 A8                      ;
     CPY      #$D0                      ; 0x1eb29 $EB19 C0 D0                   ;
-    BCC      Label_EB20                ; 0x1eb2b $EB1B 90 03                   ;
+    BCC      Label_EB20+1                ; 0x1eb2b $EB1B 90 03                   ;
 LEB1D:                                                                          ;
     LDA      #$40                      ; 0x1eb2d $EB1D A9 40                   ; A = 40
-Label_EB20 = * + $0001                                                         ;
+Label_EB20:
 ; read from side scroll tile data ? 6000 to 63FF                               ;
 ; $EB20:B1 0E    LDA ($0E),Y 	@ $6151 = #$40                                   ;
     BIT      $0EB1                     ; 0x1eb2f $EB1F 2C B1 0E                ;
@@ -7226,10 +7226,11 @@ LEFE9:                                                                          
 .byt    $03                            ; 0x1effa $EFEA 03                      ;
 .byt    $02                            ; 0x1effb $EFEB 02                      ;
 .byt    $02                            ; 0x1effc $EFEC 02                      ;
-    ORA      ($01,x)                   ; 0x1effd $EFED 01 01                   ;
-    BRK                                ; 0x1efff $EFEF 00                      ;
-    BRK                                ; 0x1f000 $EFF0 00                      ;
-    BRK                                ; 0x1f001 $EFF1 00                      ;
+.byt    $01, $01, $00, $00, $00
+    ; ORA      ($01,x)                   ; 0x1effd $EFED 01 01                   ;
+    ; BRK                                ; 0x1efff $EFEF 00                      ;
+    ; BRK                                ; 0x1f000 $EFF0 00                      ;
+    ; BRK                                ; 0x1f001 $EFF1 00                      ;
 bank7_Enemy_Routines2_Moa:                                                      ;
     LDA      #$01                      ; 0x1f002 $EFF2 A9 01                   ; A = 01
     STA      $02                       ; 0x1f004 $EFF4 85 02                   ;
@@ -8121,10 +8122,10 @@ bank7_Continue_Save_Screen_Tile_Mappings:                                       
 ; ---------------------------------------------------------------------------- ;
 bank7_code53:                                                                   ;
     JSR      LD15C                     ; 0x1fe86 $FE76 20 5C D1                ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x1fe89 $FE79 20 85 D3;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP  ; 0x1fe89 $FE79 20 85 D3;
 bank7_pointer_table:                                                            ;
-.word    bank7_code54__Flash_Text_QUIT_Red_and_White; 0x1fe8c $FE7C 87 FE      ;
-.word    LCF21_SaveGameWhenChooseSAVEwhenDead__maybe; 0x1fe8e $FE7E 21 CF      ;
+.word    bank7_code54__Flash_Text_QUIT_Red_and_White  ; 0x1fe8c $FE7C 87 FE      ;
+.word    LCF21_SaveGameWhenChooseSAVEwhenDead__maybe  ; 0x1fe8e $FE7E 21 CF      ;
 .word    LCF05                         ; 0x1fe90 $FE80 05 CF                   ;
 .word    LD323                         ; 0x1fe92 $FE82 23 D3                   ;
 ; ---------------------------------------------------------------------------- ;
@@ -8234,7 +8235,7 @@ LFF36:                                                                          
     INX                                ; 0x1ff54 $FF44 E8                      ;
     CPX      #$0D                      ; 0x1ff55 $FF45 E0 0D                   ;
     BCC      LFED3                     ; 0x1ff57 $FF47 90 8A                   ;
-    JMP      SwapToPRG0; 0x1ff59 $FF49 4C C5 FF                ; Load Bank 0
+    JMP      SwapToPRG0                ; 0x1ff59 $FF49 4C C5 FF                ; Load Bank 0
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank7_UNUSED_FF4C:                                                              ;
