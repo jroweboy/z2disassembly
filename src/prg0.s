@@ -98,7 +98,7 @@ LEC02 = $EC02
 .export bank0_unknown4
 .export Chandeliers_in_North_Castle
 .export Check_for_Fire_Spell
-.export Hub_Update_Routine
+.export Hud_Update_Routine
 .export Initialization_stuff
 .export LevelUp_Pane__BlankLine_SecondHalfOnly
 .export Side_View_Initialization_when_entering_a_Key_Area
@@ -2651,7 +2651,7 @@ L90ED:                                                                          
     BNE      L912F                     ; 0x1100 $90F0 D0 3D                    ;
     LDA      $0757                     ; 0x1102 $90F2 AD 57 07                 ;; Position of Elevator in Map
     BEQ      bank0_Place_Locked_Door   ; 0x1105 $90F5 F0 03                    ;
-    JSR      bank0_Place_Elevator___spawn; 0x1107 $90F7 20 50 91                 ; Place Elevator
+    JSR      bank0_Place_Elevator___spawn ; 0x1107 $90F7 20 50 91                 ; Place Elevator
 bank0_Place_Locked_Door:                                                        ;
     LDA      $0758                     ; 0x110a $90FA AD 58 07                 ;; Position of Locked Door in Map
     BEQ      L912E                     ; 0x110d $90FD F0 2F                    ;
@@ -2736,7 +2736,7 @@ bank0_Place_Elevator___spawn:                                                   
     LSR                                ; 0x118c $917C 4A                       ;
     LSR                                ; 0x118d $917D 4A                       ;
     TAY                                ; 0x118e $917E A8                       ;
-    LDA      Table_for_Elevator_Positions_when_changing_screens,y; 0x118f $917F B9 4E 91;
+    LDA      Table_for_Elevator_Positions_when_changing_screens,y ; 0x118f $917F B9 4E 91;
     STA      $2A                       ; 0x1192 $9182 85 2A                    ; Enemy 0 Y Position
     ADC      #$08                      ; 0x1194 $9184 69 08                    ;
     STA      $29                       ; 0x1196 $9186 85 29                    ; Link's Y Position
@@ -3541,7 +3541,7 @@ bank0_unknown16:                                                                
 L968B:                                                                          ;
 .byt    $20,$68                        ; 0x169b $968B 20 68                    ;
 ; ---------------------------------------------------------------------------- ;
-Hub_Update_Routine:                                                             ;
+Hud_Update_Routine:                                                             ;
     LDA      $0776                     ; 0x169d $968D AD 76 07                 ; Current Experience (low byte)
     SEC                                ; 0x16a0 $9690 38                       ;
     SBC      $0771                     ; 0x16a1 $9691 ED 71 07                 ; Exp. needed for Next Level (low byte)
@@ -3648,7 +3648,7 @@ L972E:                                                                          
     LDA      $0775                     ; 0x1758 $9748 AD 75 07                 ; Current Experience (high byte)
     STA      $00                       ; 0x175b $974B 85 00                    ;
     LDA      $0776                     ; 0x175d $974D AD 76 07                 ; Current Experience (low byte)
-    JSR      Experience_Convertion_and_Display_Routine; 0x1760 $9750 20 A4 A5      ;
+    JSR      Experience_Convertion_and_Display_Routine ; 0x1760 $9750 20 A4 A5      ;
     PHA                                ; 0x1763 $9753 48                       ;
     TYA                                ; 0x1764 $9754 98                       ;
     LDY      $0301                     ; 0x1765 $9755 AC 01 03                 ;;ppu number of bytes following (counts both instructions and tile data values); Used when writing text to screen
@@ -3663,7 +3663,7 @@ L9764     = * + $0002                                                          ;
     LDA      $0770                     ; 0x1779 $9769 AD 70 07                 ;; Exp. needed for Next Level (high byte)
     STA      $00                       ; 0x177c $976C 85 00                    ;
     LDA      $0771                     ; 0x177e $976E AD 71 07                 ;; Exp. needed for Next Level (low byte)
-    JSR      Experience_Convertion_and_Display_Routine; 0x1781 $9771 20 A4 A5      ;
+    JSR      Experience_Convertion_and_Display_Routine ; 0x1781 $9771 20 A4 A5      ;
     TYA                                ; 0x1784 $9774 98                       ;
     LDY      $0301                     ; 0x1785 $9775 AC 01 03                 ;;ppu number of bytes following (counts both instructions and tile data values); Used when writing text to screen
     STA      $0318,y                   ; 0x1788 $9778 99 18 03                 ;
@@ -4086,7 +4086,7 @@ L9A12:                                                                          
     BNE      L9A12                     ; 0x1a26 $9A16 D0 FA                    ;
 L9A18:                                                                          ;
     LDA      $0740                     ; 0x1a28 $9A18 AD 40 07                 ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x1a2b $9A1B 20 85 D3;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP     ; 0x1a2b $9A1B 20 85 D3;
 bank0_unknown_pointer_table2:                                                   ;
 .word    L9B13                         ; 0x1a2e $9A1E 13 9B                    ;
 .word    bank0_unknown22               ; 0x1a30 $9A20 30 9A                    ;
@@ -4241,7 +4241,7 @@ L9B19:                                                                          
     AND      #$0F                      ; 0x1b2c $9B1C 29 0F                    ; keep bits .... xxxx
     STA      $01                       ; 0x1b2e $9B1E 85 01                    ;
     CMP      #$08                      ; 0x1b30 $9B20 C9 08                    ;
-    BCS      DECIDE_IF_DRAW_ITEMS_WHICH_LINK_HAS_ON_SPELL_PAUSE_PANE_SCREEN; 0x1b32 $9B22 B0 08;
+    BCS      DECIDE_IF_DRAW_ITEMS_WHICH_LINK_HAS_ON_SPELL_PAUSE_PANE_SCREEN ; 0x1b32 $9B22 B0 08;
     LDA      #$98                      ; 0x1b34 $9B24 A9 98                    ; A = 98
     SEC                                ; 0x1b36 $9B26 38                       ;
     SBC      $01                       ; 0x1b37 $9B27 E5 01                    ;
@@ -4420,11 +4420,11 @@ L9D59:                                                                          
 L9D69:                                                                          ;
     DEY                                ; 0x1d79 $9D69 88                       ;
     BNE      L9D69                     ; 0x1d7a $9D6A D0 FD                    ;
-    STA      $2000                     ; 0x1d7c $9D6C 8D 00 20                 ;
-    STX      $2005                     ; 0x1d7f $9D6F 8E 05 20                 ;
-    STY      $2005                     ; 0x1d82 $9D72 8C 05 20                 ;
+    STA      PPU_CTRL                     ; 0x1d7c $9D6C 8D 00 20                 ;
+    STX      PPU_SCROLL                     ; 0x1d7f $9D6F 8E 05 20                 ;
+    STY      PPU_SCROLL                     ; 0x1d82 $9D72 8C 05 20                 ;
     LDA      $0524                     ; 0x1d85 $9D75 AD 24 05                 ;;menu control	(and) ; OVERWORLD: 	set to 1 to pause (will change to 2) , set to 3 to unpause (will change to 0); Routine Index
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x1d88 $9D78 20 85 D3;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP ; 0x1d88 $9D78 20 85 D3;
 bank0_unknown_pointer_table3:                                                   ;
 .word    LA199                         ; 0x1d8b $9D7B 99 A1                    ;
 .word    bank0_Pause_Pane_LOAD_FROM_ROM_TO_RAM_FOR_MENU_TEXT__SPELL; 0x1d8d $9D7D 47 A3;
@@ -4466,9 +4466,9 @@ L9DB0:                                                                          
 L9DC0:                                                                          ;
     DEY                                ; 0x1dd0 $9DC0 88                       ;
     BNE      L9DC0                     ; 0x1dd1 $9DC1 D0 FD                    ;
-    STA      $2000                     ; 0x1dd3 $9DC3 8D 00 20                 ;
-    STX      $2005                     ; 0x1dd6 $9DC6 8E 05 20                 ;
-    STY      $2005                     ; 0x1dd9 $9DC9 8C 05 20                 ;
+    STA      PPU_CTRL                     ; 0x1dd3 $9DC3 8D 00 20                 ;
+    STX      PPU_SCROLL                     ; 0x1dd6 $9DC6 8E 05 20                 ;
+    STY      PPU_SCROLL                     ; 0x1dd9 $9DC9 8C 05 20                 ;
 L9DCC:                                                                          ;
     RTS                                ; 0x1ddc $9DCC 60                       ;
                                                                                ;
@@ -4486,7 +4486,7 @@ L9DDE:                                                                          
     JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x1df1 $9DE1 20 85 D3;
 Pointer_table_for_Pause_Pane:                                                   ;
 .word    L9DCC                         ; 0x1df4 $9DE4 CC 9D                    ;
-.word    bank0_Pause_Pane_LOAD_FROM_ROM_TO_RAM_FOR_MENU_TEXT__SPELL; 0x1df6 $9DE6 47 A3;LOAD FROM ROM TO RAM THE SPELL MENU TEXT
+.word    bank0_Pause_Pane_LOAD_FROM_ROM_TO_RAM_FOR_MENU_TEXT__SPELL ; 0x1df6 $9DE6 47 A3;LOAD FROM ROM TO RAM THE SPELL MENU TEXT
 .word    LA148                         ; 0x1df8 $9DE8 48 A1                    ;
 .word    LA26B                         ; 0x1dfa $9DEA 6B A2                    ;
 .word    involves_pause_pane_deciding_what_to_draw_based_on_what_spells_list_has_and_drawing_it__main; 0x1dfc $9DEC FE A2;
@@ -5316,6 +5316,7 @@ LA352:                                                                          
     CPY      #$18                      ; 0x2369 $A359 C0 18                    ;
     BEQ      LA31C                     ; 0x236b $A35B F0 BF                    ;goto done , play menu-opening sound and inc routine index
     BNE      LA352                     ; 0x236d $A35D D0 F3                    ;otherwise goto loop
+; ---------------------------------------------------------------------------- ;
 part_of__bank0_Pause_Pane_LOAD_FROM_ROM_TO_RAM_FOR_MENU_TEXT__SPELL:            ;
     JSR      LA546                     ; 0x236f $A35F 20 46 A5                 ;
 LA362:                                                                          ;
@@ -5870,7 +5871,7 @@ bank0_unknown37:                                                                
     LDX      #$04                      ; 0x26e2 $A6D2 A2 04                    ; X = 04
 LA6D4:                                                                          ;
     STX      $10                       ; 0x26e4 $A6D4 86 10                    ;; used as monster x register ;draw boss hp bar
-    JSR      occurs_when_break_block_stab_block; 0x26e6 $A6D6 20 DD A6             ;
+    JSR      occurs_when_break_block_stab_block ; 0x26e6 $A6D6 20 DD A6             ;
     DEX                                ; 0x26e9 $A6D9 CA                       ;
     BPL      LA6D4                     ; 0x26ea $A6DA 10 F8                    ;
 LA6DC:                                                                          ;
@@ -6002,9 +6003,9 @@ LA7B1:                                                                          
 LA7C1:                                                                          ;
     DEY                                ; 0x27d1 $A7C1 88                       ;
     BNE      LA7C1                     ; 0x27d2 $A7C2 D0 FD                    ;
-    STA      $2000                     ; 0x27d4 $A7C4 8D 00 20                 ;
-    STX      $2005                     ; 0x27d7 $A7C7 8E 05 20                 ;
-    STY      $2005                     ; 0x27da $A7CA 8C 05 20                 ;
+    STA      PPU_CTRL                     ; 0x27d4 $A7C4 8D 00 20                 ;
+    STX      PPU_SCROLL                     ; 0x27d7 $A7C7 8E 05 20                 ;
+    STY      PPU_SCROLL                     ; 0x27da $A7CA 8C 05 20                 ;
     INC       a:$12                     ; 0x27dd $A7CD EE 12 00                 ;
     LDA       a:$12                     ; 0x27e0 $A7D0 AD 12 00                 ;
     AND      #$07                      ; 0x27e3 $A7D3 29 07                    ; keep bits .... .xxx
@@ -6085,7 +6086,7 @@ bank0_unknown43:                                                                
     JSR      SwapCHR                   ; 0x287b $A86B 20 B1 BF          ;
     LDA      $FF                       ; 0x287e $A86E A5 FF                    ;; Sprite Bank ?
     AND      #$FB                      ; 0x2880 $A870 29 FB                    ; keep bits xxxx x.xx
-    STA      $2000                     ; 0x2882 $A872 8D 00 20                 ;
+    STA      PPU_CTRL                     ; 0x2882 $A872 8D 00 20                 ;
     LDA      $2002                     ; 0x2885 $A875 AD 02 20                 ;
     LDA      #$20                      ; 0x2888 $A878 A9 20                    ; A = 20
     LDY      #$00                      ; 0x288a $A87A A0 00                    ; Y = 00
@@ -6893,7 +6894,7 @@ LBF00:                                                                          
 ;     SEI                                ; 0x3f80 $BF70 78                       ;
 ;     CLD                                ; 0x3f81 $BF71 D8                       ;
 ;     LDX      #$00                      ; 0x3f82 $BF72 A2 00                    ; X = 00
-;     STX      $2000                     ; 0x3f84 $BF74 8E 00 20                 ;
+;     STX      PPU_CTRL                     ; 0x3f84 $BF74 8E 00 20                 ;
 ;     INX                                ; 0x3f87 $BF77 E8                       ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0x3f88 $BF78 AD 02 20                 ;

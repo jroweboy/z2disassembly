@@ -295,7 +295,7 @@ bank5_Pointer_table_for_Small_Objects_Construction_Routines:                    
 .word    bank5_Small_Objects_Construction_Routines_Mau_Statue_facing_right_2_high; 0x14147 $8137 72 82;Mau Statue, facing right, 2 high
 .word    bank5_Small_Objects_Construction_Routines_Mau_Statue_facing_right_2_high; 0x14149 $8139 72 82;Mau Statue, facing right, 2 high
 .word    bank5_Small_Objects_Construction_Routines_Mau_Statue_facing_right_2_high; 0x1414b $813B 72 82;Mau Statue, facing right, 2 high
-.word    bank5_Small_Objects_Construction_Routines_Locked_Door; 0x1414d $813D 56 82;Locked Door
+.word    bank5_Small_Objects_Construction_Routines_Locked_Door ; 0x1414d $813D 56 82;Locked Door
 L8140     = * + $0001                                                          ;
 .word    bank5_Small_Objects_Construction_Routines_Pit_extending_to_bottom_1_wide; 0x1414f $813F 8F 82;Pit, extending to bottom, 1 wide
 .word    bank5_Small_Objects_Construction_Routines_Cloud__Long; 0x14151 $8141 B1 82;Cloud - Long
@@ -1058,7 +1058,7 @@ L8B77:                                                                          
     LDA      $2002                     ; 0x14b87 $8B77 AD 02 20                ;
     LDA      $FF                       ; 0x14b8a $8B7A A5 FF                   ;; Sprite Bank ?
     AND      #$FB                      ; 0x14b8c $8B7C 29 FB                   ; keep bits xxxx x.xx
-    STA      $2000                     ; 0x14b8e $8B7E 8D 00 20                ;
+    STA      PPU_CTRL                     ; 0x14b8e $8B7E 8D 00 20                ;
     LDA      #$20                      ; 0x14b91 $8B81 A9 20                   ; A = 20
     STA      $2006                     ; 0x14b93 $8B83 8D 06 20                ;
     LDA      #$00                      ; 0x14b96 $8B86 A9 00                   ; A = 00
@@ -1113,7 +1113,7 @@ L8BC4:                                                                          
     DEX                                ; 0x14bed $8BDD CA                      ;
     STX      $0301                     ; 0x14bee $8BDE 8E 01 03                ;;ppu number of bytes following (counts both instructions and tile data values); Used when writing text to screen
     LDA      $0761                     ; 0x14bf1 $8BE1 AD 61 07                ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x14bf4 $8BE4 20 85 D3;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP ; 0x14bf4 $8BE4 20 85 D3;
 bank5_pointer_table_Related_to_Ending:                                          ;
 .word    bank5_code5                   ; 0x14bf7 $8BE7 1D 8C                   ;
 .word    L8C5F                         ; 0x14bf9 $8BE9 5F 8C                   ;
@@ -1461,7 +1461,7 @@ L8E80:                                                                          
     JSR      L8F6B                     ; 0x14e90 $8E80 20 6B 8F                ;
 L8E83:                                                                          ;
     LDA      $33                       ; 0x14e93 $8E83 A5 33                   ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x14e95 $8E85 20 85 D3;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP ; 0x14e95 $8E85 20 85 D3;
 bank5_pointer_table0:                                                           ;
 .word    bank5_code9                   ; 0x14e98 $8E88 8E 8E                   ;
 .word    bank5_code10                  ; 0x14e9a $8E8A AE 8E                   ;
@@ -2531,10 +2531,10 @@ bank5_pointer_table_dark_link:                                                  
 .word    L980D                         ; 0x157e0 $97D0 0D 98                   ;01 display triforce and fadeout
 .word    L983E                         ; 0x157e2 $97D2 3E 98                   ;02 flash screen and palette change (to black/purple)
 .word    L987B                         ; 0x157e4 $97D4 7B 98                   ;03 spawn the dark link
-.word    L9B3A                         ; 0x157e6 $97D6 3A 9B                   ;
-.word    L9B53                         ; 0x157e8 $97D8 53 9B                   ;
-.word    L9B91                         ; 0x157ea $97DA 91 9B                   ;
-.word    L9BA8                         ; 0x157ec $97DC A8 9B                   ;
+.word    L9B3A                         ; 0x157e6 $97D6 3A 9B                   ;04 flash
+.word    L9B53                         ; 0x157e8 $97D8 53 9B                   ;05 stop input 
+.word    L9B91                         ; 0x157ea $97DA 91 9B                   ;06 spawn old man
+.word    L9BA8                         ; 0x157ec $97DC A8 9B                   ;07 victory theme starts
 ; ---------------------------------------------------------------------------- ;
 L97DE:                                                                          ;
     INC      $AF                       ; 0x157ee $97DE E6 AF                   ;;monster itemID/ai?	af,b0,b1,b2,b3,b4
@@ -3893,7 +3893,7 @@ LA094:                                                                          
     LDA      $074F                     ; 0x160a4 $A094 AD 4F 07                ;; Related to Pause Pane
     ORA      #$80                      ; 0x160a7 $A097 09 80                   ;;Set Bits:1000_0000
     STA      $074F                     ; 0x160a9 $A099 8D 4F 07                ;; Related to Pause Pane
-    JSR      bank7_Link_Collision_Detection; 0x160ac $A09C 20 C1 D6                ;
+    JSR      bank7_Link_Collision_Detection ; 0x160ac $A09C 20 C1 D6                ;
     LDA      $A1,x                     ; 0x160af $A09F B5 A1                   ;; Enemy Code
     CMP      #$17                      ; 0x160b1 $A0A1 C9 17                   ;
     BNE      LA0FB                     ; 0x160b3 $A0A3 D0 56                   ;
@@ -4533,9 +4533,7 @@ LA4C9:                                                                          
 LA4E9:                                                                          ;
     STA      L0000                     ; 0x164f9 $A4E9 85 00                   ;
     LDY      #$00                      ; 0x164fb $A4EB A0 00                   ;;Y = #$00 0000_0000
-.byt    $B5                            ; 0x164fd $A4ED B5                      ;
-LA4EE:                                                                          ;
-.byt    $C2                            ; 0x164fe $A4EE C2                      ;
+    LDA      $C2,x                     ; 0x164fd $A4EB B5 C2                   ;
     CLC                                ; 0x164ff $A4EF 18                      ;
 LA4F0:                                                                          ;
     SBC      L0000                     ; 0x16500 $A4F0 E5 00                   ;
@@ -4694,7 +4692,7 @@ LA687:                                                                         ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank5_PowerON__Reset_Memory:                                                   ;
-    JSR      bank5_code27              ; 0x166b0 $A6A0 20 60 B9                ;
+    JSR      SetupInitialGameState     ; 0x166b0 $A6A0 20 60 B9                ;
     JSR      bank7_Reset_Memory_Ranges ; 0x166b3 $A6A3 20 81 D2                ;
     LDY      #$1F                      ; 0x166b6 $A6A6 A0 1F                   ; Y = #$1f 0001_1111
 @Loop:                                                                         ;
@@ -4722,24 +4720,22 @@ bank5_PowerON__Reset_Memory:                                                   ;
 ; ---------------------------------------------------------------------------- ;
 LA6D9:                                                                          ;
     JSR      LD174                     ; 0x166e9 $A6D9 20 74 D1                ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x166ec $A6DC 20 85 D3;
-    BEQ      LA687                     ; 0x166ef $A6DF F0 A6                   ;
-    AND      LE5B2                     ; 0x166f1 $A6E1 2D B2 E5                ;
-    LDX      $A9                       ; 0x166f4 $A6E4 A6 A9                   ;
-    CPY      #$8D                      ; 0x166f6 $A6E6 C0 8D                   ;
-    BRK                                ; 0x166f8 $A6E8 00                      ;
-    ORA      ($A9,x)                   ; 0x166f9 $A6E9 01 A9                   ;
-    BRK                                ; 0x166fb $A6EB 00                      ;
-    STA      $076C                     ; 0x166fc $A6EC 8D 6C 07                ;; (00=restart from zelda's castle with 3 lives,  01=no routine, 02=die, 03=wake up zelda, 04=roll credits, 06=show the lives then restart the scene)
-    RTS                                ; 0x166ff $A6EF 60                      ;
-                                                                               ;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP     ; 0x166ec $A6DC 20 85 D3;
+.word bank5_code19
+.word $b22d
+.word $a6e5
+    lda #$c0
+    sta $0100
+    lda #$00
+    sta $076c
+    rts
 ; ---------------------------------------------------------------------------- ;
 bank5_code19:                                                                   ;
     LDA      $0736                     ; 0x16700 $A6F0 AD 36 07                ; Game Mode
     CMP      #$03                      ; 0x16703 $A6F3 C9 03                   ;
     BCC      LA6FF                     ; 0x16705 $A6F5 90 08                   ;
-    JSR      bank5_Animation_of_Stars_in_the_Sky; 0x16707 $A6F7 20 CF A8           ; Animation of Stars in the Sky
-    JSR      bank5_Animation_of_Glints_in_Water; 0x1670a $A6FA 20 18 A9            ; Animation of Glints in Water
+    JSR      bank5_Animation_of_Stars_in_the_Sky ; 0x16707 $A6F7 20 CF A8           ; Animation of Stars in the Sky
+    JSR      bank5_Animation_of_Glints_in_Water ; 0x1670a $A6FA 20 18 A9            ; Animation of Glints in Water
     LDA      #$00                      ; 0x1670d $A6FD A9 00                   ; A = 00
 LA6FF:                                                                          ;
     JSR      LD168                     ; 0x1670f $A6FF 20 68 D1                ;
@@ -4794,7 +4790,7 @@ LA749:                                                                          
     AND      #$FC                      ; 0x1675e $A74E 29 FC                   ;;Keep Bits:1111_1100
     ORA      $36                       ; 0x16760 $A750 05 36                   ;; Sword Projectile Y On Screen
     STA      $FF                       ; 0x16762 $A752 85 FF                   ;; Sprite Bank ?
-    STA      $2000                     ; 0x16764 $A754 8D 00 20                ;
+    STA      PPU_CTRL                     ; 0x16764 $A754 8D 00 20                ;
     LDA      $27                       ; 0x16767 $A757 A5 27                   ;
     LDY      $28                       ; 0x16769 $A759 A4 28                   ;
     STA      $2006                     ; 0x1676b $A75B 8D 06 20                ;
@@ -5040,10 +5036,17 @@ LAB41:                                                                          
 .byt    $B0,$B0,$B0,$B0,$B0,$B0,$B1,$B1; 0x16b61 $AB51 B0 B0 B0 B0 B0 B0 B1 B1 ;
 .byt    $B1,$B1,$B1,$B1,$B1,$B1        ; 0x16b69 $AB59 B1 B1 B1 B1 B1 B1       ;
 LAB5F:                                                                          ;
-.byt    $69                            ; 0x16b6f $AB5F 69                      ;
-LAB60:                                                                          ;
-.byt    $AF,$84,$AF,$AA,$AF,$C6,$AF,$DB; 0x16b70 $AB60 AF 84 AF AA AF C6 AF DB ;
-.byt    $AF,$EF,$AF,$14,$B0            ; 0x16b78 $AB68 AF EF AF 14 B0          ;
+.word ($af69)
+.word ($af84)
+.word ($afaa)
+.word ($afc6)
+.word ($afdb)
+.word ($afef)
+.word ($b014)
+; .byt    $69                            ; 0x16b6f $AB5F 69                      ;
+; LAB60:                                                                          ;
+; .byt    $AF,$84,$AF,$AA,$AF,$C6,$AF,$DB; 0x16b70 $AB60 AF 84 AF AA AF C6 AF DB ;
+; .byt    $AF,$EF,$AF,$14,$B0            ; 0x16b78 $AB68 AF EF AF 14 B0          ;
 ; ---------------------------------------------------------------------------- ;
 LAB6D:                                                                          ;
     LDY      #$00                      ; 0x16b7d $AB6D A0 00                   ;;Y = #$00 0000_0000
@@ -5066,18 +5069,23 @@ LAB7F:                                                                          
     AND      #$FC                      ; 0x16b94 $AB84 29 FC                   ;;Keep Bits:1111_1100
     ORA      $36                       ; 0x16b96 $AB86 05 36                   ;; Sword Projectile Y On Screen
     STA      $FF                       ; 0x16b98 $AB88 85 FF                   ;; Sprite Bank ?
-    STA      $2000                     ; 0x16b9a $AB8A 8D 00 20                ;
+    STA      PPU_CTRL                  ; 0x16b9a $AB8A 8D 00 20                ;
     LDA      $27                       ; 0x16b9d $AB8D A5 27                   ;
     LDY      $28                       ; 0x16b9f $AB8F A4 28                   ;
     STA      $2006                     ; 0x16ba1 $AB91 8D 06 20                ;
     STY      $2006                     ; 0x16ba4 $AB94 8C 06 20                ;
-.byt    $AD                            ; 0x16ba7 $AB97 AD                      ;
-LAB98:                                                                          ;
-.byt    $07                            ; 0x16ba8 $AB98 07                      ;
-    JSR      L07AD                     ; 0x16ba9 $AB99 20 AD 07                ;; * related to Raft Animation *
-    JSR      L02AD                     ; 0x16bac $AB9C 20 AD 02                ;
-    JSR      L9520                     ; 0x16baf $AB9F 20 20 95                ;
-.byt    $A7                            ; 0x16bb2 $ABA2 A7                      ;
+; .byt    $AD                            ; 0x16ba7 $AB97 AD                      ;
+; LAB98:                                                                          ;
+; .byt    $07                            ; 0x16ba8 $AB98 07                      ;
+;     JSR      L07AD                     ; 0x16ba9 $AB99 20 AD 07                ;; * related to Raft Animation *
+;     JSR      L02AD                     ; 0x16bac $AB9C 20 AD 02                ;
+;     JSR      L9520                     ; 0x16baf $AB9F 20 20 95                ;
+; .byt    $A7                            ; 0x16bb2 $ABA2 A7                      ;
+    lda PpuData_2007                    ; AB97 [16]  AD 07 20
+    lda PpuData_2007                    ; AB9A [16]  AD 07 20
+    lda PpuStatus_2002                  ; AB9D [16]  AD 02 20
+    jsr $a795                           ; ABA0 [16]  20 95 A7
+
     LDA      $0726                     ; 0x16bb3 $ABA3 AD 26 07                ;;?which is the black transition screen when loading a battle scene.  It hides the loading gfx.; Dialog Box Drawing Flag (00-01) Toggles while a dialog box is being drawn.
     BNE      LAC06                     ; 0x16bb6 $ABA6 D0 5E                   ;
     LDA      $0504                     ; 0x16bb8 $ABA8 AD 04 05                ;; Timer for Link graphic to change when walking (OW)	;Timer for Sword in middle swing (SS)
@@ -5112,15 +5120,22 @@ LABDF:                                                                          
     BNE      LAC06                     ; 0x16bf3 $ABE3 D0 21                   ;
 LABE5:                                                                          ;
     LDA      $0761                     ; 0x16bf5 $ABE5 AD 61 07                ;
-.byt    $20                            ; 0x16bf8 $ABE8 20                      ;
-LABE9:                                                                          ;
-    STA      $D3                       ; 0x16bf9 $ABE9 85 D3                   ;
-    AND      ($AC),y                   ; 0x16bfb $ABEB 31 AC                   ;
-.byt    $73                            ; 0x16bfd $ABED 73                      ;
-    LDY      LACA8                     ; 0x16bfe $ABEE AC A8 AC                ;
-.byt    $FA                            ; 0x16c01 $ABF1 FA                      ;
-    LDY      bank5_code_AD7C           ; 0x16c02 $ABF2 AC 7C AD                ;
-    ORA      $AE,x                     ; 0x16c05 $ABF5 15 AE                   ;
+    jsr bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP
+    .word ($ac31)
+    .word ($ac73)
+    .word ($aca8)
+    .word ($acfa)
+    .word ($ad7c)
+    .word ($ae15)
+; .byt    $20                            ; 0x16bf8 $ABE8 20                      ;
+; LABE9:                                                                          ;
+;     STA      $D3                       ; 0x16bf9 $ABE9 85 D3                   ;
+;     AND      ($AC),y                   ; 0x16bfb $ABEB 31 AC                   ;
+; .byt    $73                            ; 0x16bfd $ABED 73                      ;
+;     LDY      LACA8                     ; 0x16bfe $ABEE AC A8 AC                ;
+; .byt    $FA                            ; 0x16c01 $ABF1 FA                      ;
+;     LDY      bank5_code_AD7C           ; 0x16c02 $ABF2 AC 7C AD                ;
+;     ORA      $AE,x                     ; 0x16c05 $ABF5 15 AE                   ;
 bank5_code_ABF7:                                                                ;
     JSR      LAC07                     ; 0x16c07 $ABF7 20 07 AC                ;
     LDA      $33                       ; 0x16c0a $ABFA A5 33                   ;
@@ -5435,11 +5450,14 @@ LAE49:                                                                          
 LAE4A:                                                                          ;
     LDA      $35                       ; 0x16e5a $AE4A A5 35                   ;
     JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x16e5c $AE4C 20 85 D3;
-    EOR      $AE,x                     ; 0x16e5f $AE4F 55 AE                   ;
-.byt    $02                            ; 0x16e61 $AE51 02                      ;
-.byt    $AF                            ; 0x16e62 $AE52 AF                      ;
-    ORA      LA5AF,y                   ; 0x16e63 $AE53 19 AF A5                ;
-.byt    $FC                            ; 0x16e66 $AE56 FC                      ;
+.word ($ae55)
+.word ($af02)
+.word ($af19)
+;     EOR      $AE,x                     ; 0x16e5f $AE4F 55 AE                   ;
+; .byt    $02                            ; 0x16e61 $AE51 02                      ;
+; .byt    $AF                            ; 0x16e62 $AE52 AF                      ;
+; .byt    $19,$AF                        ; 0x16e63 $AE53 19 AF
+    LDA      $FC                       ; 0x16e67 $AE55 A5 FC                   ;
     AND      #$07                      ; 0x16e67 $AE57 29 07                   ;;Keep Bits:0000_0111
     BNE      LAE14                     ; 0x16e69 $AE59 D0 B9                   ;
     LDA      $FC                       ; 0x16e6b $AE5B A5 FC                   ;
@@ -5519,10 +5537,11 @@ LAEE6:                                                                          
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 LAEE7:                                                                          ;
-.byt    $1B                            ; 0x16ef7 $AEE7 1B                      ;
-    ROL      $1C                       ; 0x16ef8 $AEE8 26 1C                   ;
-    ORA      $14,x                     ; 0x16efa $AEEA 15 14                   ;
-    AND      $1A                       ; 0x16efc $AEEC 25 1A                   ;;draw sprite ?	1a,1b,1c,1d,1e,1f; Saved Game Presence in Slot (1 bit per slot) ?
+; .byt    $1B                            ; 0x16ef7 $AEE7 1B                      ;
+;     ROL      $1C                       ; 0x16ef8 $AEE8 26 1C                   ;
+;     ORA      $14,x                     ; 0x16efa $AEEA 15 14                   ;
+;     AND      $1A                       ; 0x16efc $AEEC 25 1A                   ;;draw sprite ?	1a,1b,1c,1d,1e,1f; Saved Game Presence in Slot (1 bit per slot) ?
+    .byt     $1b,$26,$1c,$15,$14,$25,$1a
 LAEEE:                                                                          ;
     LDX      $34                       ; 0x16efe $AEEE A6 34                   ;
     LDY      LAEE7,x                   ; 0x16f00 $AEF0 BC E7 AE                ;
@@ -5560,11 +5579,14 @@ LAF13:                                                                          
 LAF1F:                                                                          ;
     LDA      $073D                     ; 0x16f2f $AF1F AD 3D 07                ;; Routine Index
     JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x16f32 $AF22 20 85 D3;
-    ROR      $D2                       ; 0x16f35 $AF25 66 D2                   ;
-.byt    $2B                            ; 0x16f37 $AF27 2B                      ;
-.byt    $AF                            ; 0x16f38 $AF28 AF                      ;
-.byt    $34                            ; 0x16f39 $AF29 34                      ;
-.byt    $AF                            ; 0x16f3a $AF2A AF                      ;
+    .word ($d266)
+    .word ($af2b)
+    .word ($af34)
+;     ROR      $D2                       ; 0x16f35 $AF25 66 D2                   ;
+; .byt    $2B                            ; 0x16f37 $AF27 2B                      ;
+; .byt    $AF                            ; 0x16f38 $AF28 AF                      ;
+; .byt    $34                            ; 0x16f39 $AF29 34                      ;
+; .byt    $AF                            ; 0x16f3a $AF2A AF                      ;
     LDA      #$01                      ; 0x16f3b $AF2B A9 01                   ;;A = #$01 0000_0001
     STA      $0725                     ; 0x16f3d $AF2D 8D 25 07                ;; PPU Macro Selector	
     INC      $073D                     ; 0x16f40 $AF30 EE 3D 07                ;; Routine Index
@@ -5677,6 +5699,7 @@ LB082:                                                                          
 .byt    $55,$55,$55,$DF,$FF,$FF,$75,$55; 0x17232 $B222 55 55 55 DF FF FF 75 55 ;
 .byt    $55,$55,$FF                    ; 0x1723a $B22A 55 55 FF                ;
 ; ---------------------------------------------------------------------------- ;
+bank5_code30:
     JSR      bank7_Remove_All_Sprites  ; 0x1723d $B22D 20 4C D2                ;
     JSR      LD168                     ; 0x17240 $B230 20 68 D1                ;
     JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x17243 $B233 20 85 D3;
@@ -6114,7 +6137,7 @@ LB4D5:                                                                          
     STA      L0000                     ; 0x17503 $B4F3 85 00                   ;
     LDA      #$CD                      ; 0x17505 $B4F5 A9 CD                   ; A = CD
     STA      $01                       ; 0x17507 $B4F7 85 01                   ;
-    JSR      bank5_Display_Saved_Games_Names; 0x17509 $B4F9 20 29 B5               ;
+    JSR      bank5_Display_Saved_Games_Names ; 0x17509 $B4F9 20 29 B5               ;
     RTS                                ; 0x1750c $B4FC 60                      ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
@@ -6808,7 +6831,7 @@ bank5_pointer_table6:                                                           
 bank5_Pointer_for_Item_Presence_Bits_Table:                                     ;
 .word    bank5_Initial_Item_Presence_Bits_600_61F__West_Hyrule; 0x1796e $B95E 15 BB;
 ; ---------------------------------------------------------------------------- ;
-bank5_code27:                                                                   ;
+SetupInitialGameState:                                                         ;
     LDX      #$02                      ; 0x17970 $B960 A2 02                   ; X = 02
 LB962:                                                                          ;
     TXA                                ; 0x17972 $B962 8A                      ;
@@ -7388,7 +7411,7 @@ bank5_table_Some_palettes:                                                      
 ;     SEI                                ; 0x17f80 $BF70 78                      ;
 ;     CLD                                ; 0x17f81 $BF71 D8                      ;
 ;     LDX      #$00                      ; 0x17f82 $BF72 A2 00                   ; X = 00
-;     STX      $2000                     ; 0x17f84 $BF74 8E 00 20                ;
+;     STX      PPU_CTRL                     ; 0x17f84 $BF74 8E 00 20                ;
 ;     INX                                ; 0x17f87 $BF77 E8                      ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0x17f88 $BF78 AD 02 20                ;

@@ -313,9 +313,9 @@ bank4_Pointer_table_for_Small_Objects_Construction_Routines:                    
 .word    bank4_Small_Objects_Construction_Routines_Mau_Statue_facing_left_2_high; 0x10147 $8137 5D 82;Mau Statue, facing left, 2 high
 .word    bank4_Small_Objects_Construction_Routines_Crystal_Statue; 0x10149 $8139 97 82;Crystal Statue
 .word    bank4_Small_Objects_Construction_Routines_Crystal_Statue; 0x1014b $813B 97 82;Crystal Statue
-.word    bank4_Small_Objects_Construction_Routines_Locked_Door; 0x1014d $813D 45 82;Locked Door
+.word    bank4_Small_Objects_Construction_Routines_Locked_Door ; 0x1014d $813D 45 82;Locked Door
 L8140     = * + $0001                                                          ;
-.word    bank4_Small_Objects_Construction_Routines_Locked_Door; 0x1014f $813F 45 82;Locked Door
+.word    bank4_Small_Objects_Construction_Routines_Locked_Door ; 0x1014f $813F 45 82;Locked Door
 .word    bank4_Small_Objects_Construction_Routines_Cloud__Long; 0x10151 $8141 CF 82;Cloud - Long
 .word    bank4_Small_Objects_Construction_Routines_Cloud__Short; 0x10153 $8143 D5 82;Cloud - Short
 .word    bank4_Small_Objects_Construction_Routines_Ironknuckle_Statue; 0x10155 $8145 6D 82;Ironknuckle Statue
@@ -2584,11 +2584,9 @@ L9C57:                                                                          
 L9C5E:                                                                          ;
     STA      $02C1,x                   ; 0x11c6e $9C5E 9D C1 02                ;
     LDA      #$01                      ; 0x11c71 $9C61 A9 01                   ; A = 01
-L9C65     = * + $0002                                                          ;
     STA      $02C2,x                   ; 0x11c73 $9C63 9D C2 02                ;
     LDA      #$10                      ; 0x11c76 $9C66 A9 10                   ; A = 10
     STA      $02C3,x                   ; 0x11c78 $9C68 9D C3 02                ;
-L9C6C     = * + $0001                                                          ;
     LDA      L0000                     ; 0x11c7b $9C6B A5 00                   ;
     STA      $02C0,x                   ; 0x11c7d $9C6D 9D C0 02                ;
 L9C70:                                                                          ;
@@ -3554,33 +3552,33 @@ bank4_Enemy_Init_Routines_pointers:                                             
 bank4_Pointer_table_for_Enemy_Routines2:                                        ;
 .word    bank7_Enemy_Routines1_Fairy   ; 0x1299d $A98D 1E D9                   ;
 .word    bank7_Enemy_Routines1_Red_Jar ; 0x1299f $A98F 59 D9                   ;
-.word    bank7_Enemy_Routines1_Locked_Door; 0x129a1 $A991 91 D9                ;
+.word    bank7_Enemy_Routines1_Locked_Door ; 0x129a1 $A991 91 D9                ;
 .word    bank7_Enemy_Routines1_Myu     ; 0x129a3 $A993 47 DA                   ;
 .word    bank7_Enemy_Routines1_Bot     ; 0x129a5 $A995 0C DA                   ;
 .word    LAF61                         ; 0x129a7 $A997 61 AF                   ;
-.word    bank4_Enemy_Routines_Bubble__Slow_Fast; 0x129a9 $A999 D1 99           ;
+.word    bank4_Enemy_Routines_Bubble__Slow_Fast ; 0x129a9 $A999 D1 99           ;
 .word    bank4_Enemy_Routines_Moa      ; 0x129ab $A99B 09 B9                   ;
-.word    bank4_Enemy_Routines_Falling_Block_Generator; 0x129ad $A99D 98 AB     ;
-.word    bank4_Enemy_Routines_Falling_Block; 0x129af $A99F E9 AB               ;
+.word    bank4_Enemy_Routines_Falling_Block_Generator ; 0x129ad $A99D 98 AB     ;
+.word    bank4_Enemy_Routines_Falling_Block ; 0x129af $A99F E9 AB               ;
 .word    LB23F                         ; 0x129b1 $A9A1 3F B2                   ;
 .word    LB343                         ; 0x129b3 $A9A3 43 B3                   ;
 .word    LB362                         ; 0x129b5 $A9A5 62 B3                   ;
-.word    bank4_Enemy_Routines_Dripping_Column; 0x129b7 $A9A7 BF B9             ;
-.word    bank4_Enemy_Routines_Bubble__Slow_Fast; 0x129b9 $A9A9 D1 99           ;
+.word    bank4_Enemy_Routines_Dripping_Column ; 0x129b7 $A9A7 BF B9             ;
+.word    bank4_Enemy_Routines_Bubble__Slow_Fast ; 0x129b9 $A9A9 D1 99           ;
 .word    LACDA                         ; 0x129bb $A9AB DA AC                   ;
 .word    LB485                         ; 0x129bd $A9AD 85 B4                   ;
-.word    bank7_Enemy_Routines1_Bago_Bago1; 0x129bf $A9AF 42 D8                 ;
+.word    bank7_Enemy_Routines1_Bago_Bago1 ; 0x129bf $A9AF 42 D8                 ;
 .word    bank7_Enemy_Routines1_Octorok ; 0x129c1 $A9B1 88 D8                   ;
-.word    bank7_Enemy_Routines1_Elevator; 0x129c3 $A9B3 C2 D8                   ;
-.word    bank4_Enemy_Routines_Crystal_Slot; 0x129c5 $A9B5 D4 9A                ;
+.word    bank7_Enemy_Routines1_Elevator ; 0x129c3 $A9B3 C2 D8                   ;
+.word    bank4_Enemy_Routines_Crystal_Slot ; 0x129c5 $A9B5 D4 9A                ;
 .word    bank4_Enemy_Routines_Crystal  ; 0x129c7 $A9B7 8B 9A                   ;
-.word    bank4_Enemy_Routines_Energy_Ball_Shooter__Left_Right; 0x129c9 $A9B9 DD 9B;
-.word    bank4_Enemy_Routines_Energy_Ball_Shooter__Left_Right; 0x129cb $A9BB DD 9B;
-.word    bank4_Enemy_Routines_Iron_Knuckle; 0x129cd $A9BD 8C 9C                ;
-.word    bank4_Enemy_Routines_Iron_Knuckle; 0x129cf $A9BF 8C 9C                ;
-.word    bank4_Enemy_Routines_Iron_Knuckle; 0x129d1 $A9C1 8C 9C                ;
-.word    bank4_Enemy_Routines_Mau_Generator; 0x129d3 $A9C3 61 B8               ;
-.word    bank4_Enemy_Routines_Mau_Wolf_Head; 0x129d5 $A9C5 BB B8               ;
+.word    bank4_Enemy_Routines_Energy_Ball_Shooter__Left_Right ; 0x129c9 $A9B9 DD 9B;
+.word    bank4_Enemy_Routines_Energy_Ball_Shooter__Left_Right ; 0x129cb $A9BB DD 9B;
+.word    bank4_Enemy_Routines_Iron_Knuckle ; 0x129cd $A9BD 8C 9C                ;
+.word    bank4_Enemy_Routines_Iron_Knuckle ; 0x129cf $A9BF 8C 9C                ;
+.word    bank4_Enemy_Routines_Iron_Knuckle ; 0x129d1 $A9C1 8C 9C                ;
+.word    bank4_Enemy_Routines_Mau_Generator ; 0x129d3 $A9C3 61 B8               ;
+.word    bank4_Enemy_Routines_Mau_Wolf_Head ; 0x129d5 $A9C5 BB B8               ;
 .word    LAE4F                         ; 0x129d7 $A9C7 4F AE                   ;
 .word    LB0AD                         ; 0x129d9 $A9C9 AD B0                   ;
 .word    bank4_Enemy_Routines_Stalfos  ; 0x129db $A9CB 5A 96                   ;
@@ -4568,7 +4566,7 @@ bank4_table_B115:                                                               
 LB117:                                                                          ;
 .byt    $18,$6B,$B8,$18,$6B,$B8,$18,$B8; 0x13127 $B117 18 6B B8 18 6B B8 18 B8 ;
 ; ---------------------------------------------------------------------------- ;
-LB11F:                                                                          ;
+BarbaAiRoutines:                                                                          ;
     JSR      LB20D                     ; 0x1312f $B11F 20 0D B2                ;
     JSR      LB1DE                     ; 0x13132 $B122 20 DE B1                ;
     LDA      #$18                      ; 0x13135 $B125 A9 18                   ;;A = #$18 0001_1000
@@ -6020,7 +6018,7 @@ bank4_Enemy_Routines_Helmethead__Gooma:                                         
 ; ---------------------------------------------------------------------------- ;
 LBACB:                                                                          ;
     JSR      LBE8B                     ; 0x13adb $BACB 20 8B BE                ;
-    JSR      bank4_Related_to_Horsehead; 0x13ade $BACE 20 4E BC                ;
+    JSR      bank4_Related_to_Horsehead ; 0x13ade $BACE 20 4E BC                ;
     LDA      #$06                      ; 0x13ae1 $BAD1 A9 06                   ;;A = #$06 0000_0110
 LBAD3:                                                                          ;
     LDY      $0706                     ; 0x13ae3 $BAD3 AC 06 07                ;; overworld index (0=west hyrule, 1=death mtn/maze island, 2=east hyrule)
@@ -6105,7 +6103,7 @@ LBB71:                                                                          
     JSR      L9C45                     ; 0x13b81 $BB71 20 45 9C                ;
     LDA      $60,x                     ; 0x13b84 $BB74 B5 60                   ;; Enemy facing direction
     PHA                                ; 0x13b86 $BB76 48                      ;
-    JSR      bank7_Determine_Enemy_Facing_Direction_relative_to_Link; 0x13b87 $BB77 20 91 DC;
+    JSR      bank7_Determine_Enemy_Facing_Direction_relative_to_Link ; 0x13b87 $BB77 20 91 DC;
     INY                                ; 0x13b8a $BB7A C8                      ;
     STY      $01                       ; 0x13b8b $BB7B 84 01                   ;
     PLA                                ; 0x13b8d $BB7D 68                      ;
@@ -6683,7 +6681,7 @@ bank4_UNUSED_BF60:                                                              
 ;     SEI                                ; 0x13f80 $BF70 78                      ;
 ;     CLD                                ; 0x13f81 $BF71 D8                      ;
 ;     LDX      #$00                      ; 0x13f82 $BF72 A2 00                   ;;X = #$00 0000_0000
-;     STX      $2000                     ; 0x13f84 $BF74 8E 00 20                ;
+;     STX      PPU_CTRL                     ; 0x13f84 $BF74 8E 00 20                ;
 ;     INX                                ; 0x13f87 $BF77 E8                      ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0x13f88 $BF78 AD 02 20                ;

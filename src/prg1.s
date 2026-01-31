@@ -296,26 +296,26 @@ bank1_Special_Objects__Y_Position_F:                                            
 ; ---------------------------------------------------------------------------- ;
 bank1_code1:                                                                    ;
     TXA                                ; 0x413f $812F 8A                       ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0x4140 $8130 20 85 D3; Set Object Construction Address (below)
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP ; 0x4140 $8130 20 85 D3; Set Object Construction Address (below)
 bank1_Pointer_table_for_Small_Objects_Construction_0x:                          ;
-.word    bank1_Small_Objects_Construction_Gravestone; 0x4143 $8133 F9 82       ;Gravestone
-.word    bank1_Small_Objects_Construction_Cross; 0x4145 $8135 EE 82            ;Cross
-.word    bank1_Small_Objects_Construction_SlantedCross; 0x4147 $8137 F2 82     ;Slanted Cross
-.word    bank1_Small_Objects_Construction_TreeStump; 0x4149 $8139 C8 82        ;Tree Stump
-.word    bank1_Small_Objects_Construction_Dolmen; 0x414b $813B 13 83           ;Dolmen
-.word    bank1_Small_Objects_Construction_LockedDoor_Ypos8; 0x414d $813D C1 82 ;Locked Door (Y Position set to 8)
+.word    bank1_Small_Objects_Construction_Gravestone ; 0x4143 $8133 F9 82       ;Gravestone
+.word    bank1_Small_Objects_Construction_Cross ; 0x4145 $8135 EE 82            ;Cross
+.word    bank1_Small_Objects_Construction_SlantedCross ; 0x4147 $8137 F2 82     ;Slanted Cross
+.word    bank1_Small_Objects_Construction_TreeStump ; 0x4149 $8139 C8 82        ;Tree Stump
+.word    bank1_Small_Objects_Construction_Dolmen ; 0x414b $813B 13 83           ;Dolmen
+.word    bank1_Small_Objects_Construction_LockedDoor_Ypos8 ; 0x414d $813D C1 82 ;Locked Door (Y Position set to 8)
 L8140     = * + $0001                                                          ;
-.word    bank1_Small_Objects_Construction_Zelda; 0x414f $813F 40 83            ;Zelda
-.word    bank1_Small_Objects_Construction_Zelda; 0x4151 $8141 40 83            ;Zelda
-.word    bank1_Small_Objects_Construction_PitExtendingToGround; 0x4153 $8143 31 83;Pit Extending to Ground
-.word    bank1_Small_Objects_Construction_LongCloud; 0x4155 $8145 52 83        ;Long Cloud
-.word    bank1_Small_Objects_Construction_Short_Cloud; 0x4157 $8147 58 83      ;Short Cloud
+.word    bank1_Small_Objects_Construction_Zelda ; 0x414f $813F 40 83            ;Zelda
+.word    bank1_Small_Objects_Construction_Zelda ; 0x4151 $8141 40 83            ;Zelda
+.word    bank1_Small_Objects_Construction_PitExtendingToGround ; 0x4153 $8143 31 83;Pit Extending to Ground
+.word    bank1_Small_Objects_Construction_LongCloud ; 0x4155 $8145 52 83        ;Long Cloud
+.word    bank1_Small_Objects_Construction_Short_Cloud ; 0x4157 $8147 58 83      ;Short Cloud
 L8149:                                                                          ;
-.word    bank1_Small_Objects_Construction_Short_Cloud; 0x4159 $8149 58 83      ;Short Cloud
-.word    bank1_Small_Objects_Construction_Short_Cloud; 0x415b $814B 58 83      ;Short Cloud
-.word    bank1_Small_Objects_Construction_Short_Cloud; 0x415d $814D 58 83      ;Short Cloud
-.word    bank1_Small_Objects_Construction_Short_Cloud; 0x415f $814F 58 83      ;Short Cloud
-.word    bank1_Small_Objects_Construction_Short_Cloud; 0x4161 $8151 58 83      ;Short Cloud
+.word    bank1_Small_Objects_Construction_Short_Cloud ; 0x4159 $8149 58 83      ;Short Cloud
+.word    bank1_Small_Objects_Construction_Short_Cloud ; 0x415b $814B 58 83      ;Short Cloud
+.word    bank1_Small_Objects_Construction_Short_Cloud ; 0x415d $814D 58 83      ;Short Cloud
+.word    bank1_Small_Objects_Construction_Short_Cloud ; 0x415f $814F 58 83      ;Short Cloud
+.word    bank1_Small_Objects_Construction_Short_Cloud ; 0x4161 $8151 58 83      ;Short Cloud
 ; ---------------------------------------------------------------------------- ;
 bank1_Tables_for_Level_Layers_Data:                                             ;
 .byt    $42,$42,$54,$52,$42,$42,$55,$53; 0x4163 $8153 42 42 54 52 42 42 55 53  ;
@@ -4646,7 +4646,7 @@ LBF00:                                                                          
 ;     SEI                                ; 0x7f80 $BF70 78                       ;
 ;     CLD                                ; 0x7f81 $BF71 D8                       ;
 ;     LDX      #$00                      ; 0x7f82 $BF72 A2 00                    ; X = 00
-;     STX      $2000                     ; 0x7f84 $BF74 8E 00 20                 ;
+;     STX      PPU_CTRL                     ; 0x7f84 $BF74 8E 00 20                 ;
 ;     INX                                ; 0x7f87 $BF77 E8                       ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0x7f88 $BF78 AD 02 20                 ;

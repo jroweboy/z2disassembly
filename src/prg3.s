@@ -1498,15 +1498,15 @@ bank3_Pointer_table_for_Enemy_Routines:                                         
 .word    bank7_Enemy_Routines2_Bot_and_Bit; 0xd57d $956D 91 EF                 ;Bit
 .word    bank7_Enemy_Routines2_Bot_and_Bit; 0xd57f $956F 91 EF                 ;Bot
 .word    bank7_Enemy_Routines2_Moa     ; 0xd581 $9571 F2 EF                    ;Moa
-.word    bank7_Enemy_Routines2_Ache_and_Acheman; 0xd583 $9573 7E F1            ;Acheman
+.word    bank7_Enemy_Routines2_Ache_and_Acheman ; 0xd583 $9573 7E F1            ;Acheman
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd585 $9575 E8 9A                    ;Orange Lady - Walking
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd587 $9577 E8 9A                    ;Orange Lady - Walking
-.word    bank7_Enemy_Routines2_Ache_and_Acheman; 0xd589 $9579 7E F1            ;Ache (talker)
-.word    bank7_Enemy_Routines2_Bot_and_Bit; 0xd58b $957B 91 EF                 ;Bit (talker)
+.word    bank7_Enemy_Routines2_Ache_and_Acheman ; 0xd589 $9579 7E F1            ;Ache (talker)
+.word    bank7_Enemy_Routines2_Bot_and_Bit ; 0xd58b $957B 91 EF                 ;Bit (talker)
 .word    bank3_rts                     ; 0xd58d $957D AD 95                    ;Invisible Dialog ("Welcome" sign)
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd58f $957F E8 9A                    ;Blue Old Woman - Immobile
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd591 $9581 E8 9A                    ;Blue Lumberjack - Immobile
-.word    bank3_Enemy_Routines1_Wise_Man; 0xd593 $9583 C8 9A                    ;Wise Man
+.word    bank3_Enemy_Routines1_Wise_Man ; 0xd593 $9583 C8 9A                    ;Wise Man
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd595 $9585 E8 9A                    ;Little Kid - Immobile
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd597 $9587 E8 9A                    ;Blue Lady with Bowl - Immobile
 .word    bank3_Enemy_Routines1_ManyNPC ; 0xd599 $9589 E8 9A                    ;Red Old Woman - Immobile
@@ -2437,8 +2437,8 @@ bank3_Table_for_Small_Objects_Construction_Routines:                            
 .word    bank3_SmallObjectsConstructionRoutines_Chimney_2_wide_1_high_can_crouch_in_it_0B; 0xdc03 $9BF3 56 9C;Chimney, 2 wide, 1 high (can crouch in it)	(0B)
 .word    bank3_SmallObjectsConstructionRoutines_Chimney_2_wide_1_high_cant_go_in__0C; 0xdc05 $9BF5 5C 9C;Chimney, 2 wide, 1 high (can't go in)		(0C)
 .word    bank3_SmallObjectsConstructionRoutines_Churchbell_0D; 0xdc07 $9BF7 78 86;Churchbell	(0D)
-.word    bank3_SmallObjectsConstructionRoutines_Locked_Door_glitched_tiles_0E; 0xdc09 $9BF9 8E 8B;Locked Door (glitched tiles)	(0E)
-.word    bank3_SmallObjectsConstructionRoutines_Locked_Door_glitched_tiles_0E; 0xdc0b $9BFB 8E 8B;Crash	(0F)
+.word    bank3_SmallObjectsConstructionRoutines_Locked_Door_glitched_tiles_0E ; 0xdc09 $9BF9 8E 8B;Locked Door (glitched tiles)	(0E)
+.word    bank3_SmallObjectsConstructionRoutines_Locked_Door_glitched_tiles_0E ; 0xdc0b $9BFB 8E 8B;Crash	(0F)
 .word    bank3_SmallObjectsConstructionRoutines_Portal_to_Left_00; 0xdc0d $9BFD 6C 82;Portal to Left	(00)
 .word    bank3_SmallObjectsConstructionRoutines_Portal_to_Right_01; 0xdc0f $9BFF 70 82;Portal to Right	(01)
 .word    bank3_SmallObjectsConstructionRoutines_Wall_to_Left_02; 0xdc11 $9C01 74 82;Wall to Left	(02)
@@ -3470,20 +3470,20 @@ LB08F:                                                                          
 LB09F:                                                                          ;
     DEY                                ; 0xf0af $B09F 88                       ;
     BNE      LB09F                     ; 0xf0b0 $B0A0 D0 FD                    ;
-    STA      $2000                     ; 0xf0b2 $B0A2 8D 00 20                 ;
-    STX      $2005                     ; 0xf0b5 $B0A5 8E 05 20                 ;
-    STY      $2005                     ; 0xf0b8 $B0A8 8C 05 20                 ;
+    STA      PPU_CTRL                     ; 0xf0b2 $B0A2 8D 00 20                 ;
+    STX      PPU_SCROLL                     ; 0xf0b5 $B0A5 8E 05 20                 ;
+    STY      PPU_SCROLL                     ; 0xf0b8 $B0A8 8C 05 20                 ;
     LDA      $0524                     ; 0xf0bb $B0AB AD 24 05                 ;;menu control	(and) ; OVERWORLD: 	set to 1 to pause (will change to 2) , set to 3 to unpause (will change to 0); Routine Index
 LB0AE:                                                                          ;
-    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP; 0xf0be $B0AE 20 85 D3;
+    JSR      bank7_PullAddrFromTableFollowingThisJSR_withIndexOfA_then_JMP ; 0xf0be $B0AE 20 85 D3;
 bank3_Pointer_table_for_Dialog_Routines:                                        ;
-.word    bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2; 0xf0c1 $B0B1 07 B1;advance to next routine in this table;advance to next routine in this table
-.word    bank3_Dialog_Routines_play_sound__R0; 0xf0c3 $B0B3 CB B0              ;play sound
-.word    bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2_duplicate; 0xf0c5 $B0B5 21 B6;
-.word    bank3_Dialog_Routines_save_palette_mappings_to_memory__R4; 0xf0c7 $B0B7 50 B3;save palette mappings to memory
-.word    bank3_Dialog_Routines_load_tiles_to_draw_the_dialog_box_lines_and_more__R1; 0xf0c9 $B0B9 D2 B0;load tiles to draw the dialog box lines (and more)
-.word    bank3_Dialog_Routines_Set_text_pointer_according_to_Townfolk_type__R5; 0xf0cb $B0BB 80 B4;Set text pointer according to Townfolk type (has the jmp $02)
-.word    bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2_duplicate; 0xf0cd $B0BD 21 B6;
+.word    bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2 ; 0xf0c1 $B0B1 07 B1;advance to next routine in this table;advance to next routine in this table
+.word    bank3_Dialog_Routines_play_sound__R0 ; 0xf0c3 $B0B3 CB B0              ;play sound
+.word    bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2_duplicate ; 0xf0c5 $B0B5 21 B6;
+.word    bank3_Dialog_Routines_save_palette_mappings_to_memory__R4 ; 0xf0c7 $B0B7 50 B3;save palette mappings to memory
+.word    bank3_Dialog_Routines_load_tiles_to_draw_the_dialog_box_lines_and_more__R1 ; 0xf0c9 $B0B9 D2 B0;load tiles to draw the dialog box lines (and more)
+.word    bank3_Dialog_Routines_Set_text_pointer_according_to_Townfolk_type__R5 ; 0xf0cb $B0BB 80 B4;Set text pointer according to Townfolk type (has the jmp $02)
+.word    bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2_duplicate ; 0xf0cd $B0BD 21 B6;
 .word    LB6A2                         ; 0xf0cf $B0BF A2 B6                    ;
 .word    bank3_Dialog_Routines_life_magic_restore; 0xf0d1 $B0C1 5B B7          ;life/magic restore
 .word    bank3_Dialog_Routines_wait_for_B_button; 0xf0d3 $B0C3 A6 B7           ;wait for B button
@@ -3517,7 +3517,7 @@ LB0ED:                                                                          
     STA      $054C,y                   ; 0xf104 $B0F4 99 4C 05                 ;
     DEY                                ; 0xf107 $B0F7 88                       ;
     BPL      LB0ED                     ; 0xf108 $B0F8 10 F3                    ;
-    JSR      bank3_Palette_modification_routine; 0xf10a $B0FA 20 0B B1             ; Palette modification routine
+    JSR      bank3_Palette_modification_routine ; 0xf10a $B0FA 20 0B B1             ; Palette modification routine
     INC      $0525                     ; 0xf10d $B0FD EE 25 05                 ; Routine Delay
     LDA      $0525                     ; 0xf110 $B100 AD 25 05                 ;; Routine Delay
     CMP      #$05                      ; 0xf113 $B103 C9 05                    ;
@@ -3529,7 +3529,7 @@ LB10A:                                                                          
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Palette_modification_routine:                                             ;
-    JSR      bank3_draw_tiles_for_2_rows; 0xf11b $B10B 20 F2 B2                 ; draw tiles for 2 rows
+    JSR      bank3_draw_tiles_for_2_rows ; 0xf11b $B10B 20 F2 B2                 ; draw tiles for 2 rows
 LB10E:                                                                          ;
     JSR      LB15F                     ; 0xf11e $B10E 20 5F B1                 ;
 ;$02 = Routine Delay + 1                                                       ;
@@ -3542,7 +3542,7 @@ LB10E:                                                                          
 ;From here, X = $02 rounded to lower even * 2 + $04                            ;
     LDA      #$0F                      ; 0xf12a $B11A A9 0F                    ; A = 0F
     STA      $05                       ; 0xf12c $B11C 85 05                    ;
-    JSR      bank3_check_if_Scrolling_Offset__bits_4_to_7__is_even; 0xf12e $B11E 20 17 B3; check if Scrolling Offset (bits 4-7) is even
+    JSR      bank3_check_if_Scrolling_Offset__bits_4_to_7__is_even ; 0xf12e $B11E 20 17 B3 ; check if Scrolling Offset (bits 4-7) is even
     BEQ      LB12F                     ; 0xf131 $B121 F0 0C                    ;
 ;Scrolling Offset (bits 4-7) is Odd                                            ;
     LDA      $04                       ; 0xf133 $B123 A5 04                    ;
@@ -3673,7 +3673,7 @@ LB1CF:                                                                          
     ROL                                ; 0xf1e8 $B1D8 2A                       ;
     ASL                                ; 0xf1e9 $B1D9 0A                       ;
     TAY                                ; 0xf1ea $B1DA A8                       ;
-    JSR      bank7_Set_0E_0F_pointer_according_to_Object_Group; 0xf1eb $B1DB 20 E4 DF; Set 0E-0F pointer according to Object Group
+    JSR      bank7_Set_0E_0F_pointer_according_to_Object_Group ; 0xf1eb $B1DB 20 E4 DF; Set 0E-0F pointer according to Object Group
 ;Store the 4 Tile Codes according to TSA codes in 53E,X and 54C,X              ;
     LDA      $055A,x                   ; 0xf1ee $B1DE BD 5A 05                 ;
     ASL                                ; 0xf1f1 $B1E1 0A                       ;
@@ -3919,7 +3919,7 @@ bank3_Dialog_Routines_save_palette_mappings_to_memory__R4:                      
     TAX                                ; 0xf366 $B356 AA                       ;
     LDA      $072A                     ; 0xf367 $B357 AD 2A 07                 ; Scrolling Offset High Byte
     ADC      #$00                      ; 0xf36a $B35A 69 00                    ;
-    JSR      bank3_Set_RAM_address_according_to_screen_number; 0xf36c $B35C 20 E5 B3; Set RAM address offset using screen number
+    JSR      bank3_Set_RAM_address_according_to_screen_number ; 0xf36c $B35C 20 E5 B3; Set RAM address offset using screen number
     TXA                                ; 0xf36f $B35F 8A                       ;
     AND      #$E0                      ; 0xf370 $B360 29 E0                    ; keep bits xxx. .... (round to nearest 20)
     LSR                                ; 0xf372 $B362 4A                       ;
@@ -3983,7 +3983,7 @@ LB3A4:                                                                          
     INX                                ; 0xf3c1 $B3B1 E8                       ;
     DEC      L0000                     ; 0xf3c2 $B3B2 C6 00                    ;
     BNE      LB36D                     ; 0xf3c4 $B3B4 D0 B7                    ;
-    JMP      bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2; 0xf3c6 $B3B6 4C 07 B1;
+    JMP      bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2 ; 0xf3c6 $B3B6 4C 07 B1;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 LB3B9:                                                                          ;
@@ -4034,7 +4034,7 @@ bank3_Set_RAM_address_according_to_screen_number:                               
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Pointer_table_for_rows_of_dialog_box:                                     ;
-.word    bank3_Tables_for_dialog_box_rows_tile_mappings; 0xf403 $B3F3 07 B4    ;
+.word    bank3_Tables_for_dialog_box_rows_tile_mappings ; 0xf403 $B3F3 07 B4    ;
 .word    LB415                         ; 0xf405 $B3F5 15 B4                    ;
 .word    LB415                         ; 0xf407 $B3F7 15 B4                    ;
 .word    LB415                         ; 0xf409 $B3F9 15 B4                    ;
@@ -4043,7 +4043,7 @@ bank3_Pointer_table_for_rows_of_dialog_box:                                     
 .word    LB415                         ; 0xf40f $B3FF 15 B4                    ;
 .word    LB415                         ; 0xf411 $B401 15 B4                    ;
 .word    LB415                         ; 0xf413 $B403 15 B4                    ;
-.word    bank3_Tables_for_dialog_box_rows_tile_mappings; 0xf415 $B405 07 B4    ;
+.word    bank3_Tables_for_dialog_box_rows_tile_mappings ; 0xf415 $B405 07 B4    ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Tables_for_dialog_box_rows_tile_mappings:                                 ;
 .byt    $CA,$CB,$CB,$CB,$CB,$CB,$CB,$CB; 0xf417 $B407 CA CB CB CB CB CB CB CB  ;
@@ -4057,8 +4057,8 @@ LB422:                                                                          
 .byt    $CC                            ; 0xf432 $B422 CC                       ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Pointer_table_for_Dialogs_Pointer_Table:                                  ;
-.word    bank3_Dialogs_Pointer_Table_Towns_in_West_Hyrule; 0xf433 $B423 BE AF  ;
-.word    bank3_Dialogs_Pointer_Table_Towns_in_East_Hyrule; 0xf435 $B425 26 B0  ;
+.word    bank3_Dialogs_Pointer_Table_Towns_in_West_Hyrule ; 0xf433 $B423 BE AF  ;
+.word    bank3_Dialogs_Pointer_Table_Towns_in_East_Hyrule ; 0xf435 $B425 26 B0  ;
 ; ---------------------------------------------------------------------------- ;
 bank3_table12:                                                                  ;
 .byt    $80,$40,$20,$10                ; 0xf437 $B427 80 40 20 10              ;
@@ -4071,31 +4071,31 @@ LB42E:                                                                          
 .byt    $00,$10,$00,$00,$01,$00,$00,$00; 0xf456 $B446 00 10 00 00 01 00 00 00  ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Pointer_table_for_Dialog_Conditions:                                      ;
-.word    bank3_Dialog_Conditions_Ache_Bit_talker; 0xf45e $B44E B9 B5           ;0	Ache (talker)
-.word    bank3_Dialog_Conditions_Ache_Bit_talker; 0xf460 $B450 B9 B5           ;1	Bit (talker)
-.word    bank3_Dialog_Conditions_default; 0xf462 $B452 C7 B5                   ;2	Invisible Dialog ("Welcome" sign)
-.word    bank3_Dialog_Conditions_Blue_Old_Woman__Immobile___River_Man; 0xf464 $B454 A3 B4;3	Blue Old Woman - Immobile / River Man
-.word    bank3_Dialog_Conditions_Blue_Lumberjack__Immobile; 0xf466 $B456 EE B4 ;4	Blue Lumberjack - Immobile
-.word    bank3_Dialog_Conditions_Wise_Man; 0xf468 $B458 18 B5                  ;5	Wise Man
-.word    bank3_Dialog_Conditions_Immobile; 0xf46a $B45A 4E B5                  ;6	Little Kid - Immobile
-.word    bank3_Dialog_Conditions_Immobile; 0xf46c $B45C 4E B5                  ;7	Blue Lady with Bowl - Immobile
-.word    bank3_Dialog_Conditions_Immobile; 0xf46e $B45E 4E B5                  ;8	Red Old Woman - Immobile
+.word    bank3_Dialog_Conditions_Ache_Bit_talker ; 0xf45e $B44E B9 B5           ;0	Ache (talker)
+.word    bank3_Dialog_Conditions_Ache_Bit_talker ; 0xf460 $B450 B9 B5           ;1	Bit (talker)
+.word    bank3_Dialog_Conditions_default ; 0xf462 $B452 C7 B5                   ;2	Invisible Dialog ("Welcome" sign)
+.word    bank3_Dialog_Conditions_Blue_Old_Woman__Immobile___River_Man ; 0xf464 $B454 A3 B4;3	Blue Old Woman - Immobile / River Man
+.word    bank3_Dialog_Conditions_Blue_Lumberjack__Immobile ; 0xf466 $B456 EE B4 ;4	Blue Lumberjack - Immobile
+.word    bank3_Dialog_Conditions_Wise_Man ; 0xf468 $B458 18 B5                  ;5	Wise Man
+.word    bank3_Dialog_Conditions_Immobile ; 0xf46a $B45A 4E B5                  ;6	Little Kid - Immobile
+.word    bank3_Dialog_Conditions_Immobile ; 0xf46c $B45C 4E B5                  ;7	Blue Lady with Bowl - Immobile
+.word    bank3_Dialog_Conditions_Immobile ; 0xf46e $B45E 4E B5                  ;8	Red Old Woman - Immobile
 .word    bank3_Dialog_Conditions_Idle  ; 0xf470 $B460 60 B5                    ;9	Red Lumberjack - Idle
 .word    bank3_Dialog_Conditions_Idle  ; 0xf472 $B462 60 B5                    ;A	Blue Lady with Bowl - Idle
 .word    bank3_Dialog_Conditions_Idle  ; 0xf474 $B464 60 B5                    ;B	Blue Old Woman - Idle
 .word    bank3_Dialog_Conditions_Idle  ; 0xf476 $B466 60 B5                    ;C	Red Lady - Idle
-.word    bank3_Dialog_Conditions_HealerLady_MagicLady; 0xf478 $B468 7D B5      ;D	Red Lady - Idle (healing lady)
-.word    bank3_Dialog_Conditions_HealerLady_MagicLady; 0xf47a $B46A 7D B5      ;E	Orange Old Woman - Idle (magic woman)
-.word    bank3_Dialog_Conditions_default; 0xf47c $B46C C7 B5                   ;F	Blue Lumberjack - Walking (default random Townfolk)
-.word    bank3_Dialog_Conditions_default; 0xf47e $B46E C7 B5                   ;10	Red Lady with Bowl - Walking (default random Townfolk)
-.word    bank3_Dialog_Conditions_default; 0xf480 $B470 C7 B5                   ;11	Red Old Woman - Walking (default random Townfolk)
-.word    bank3_Dialog_Conditions_default; 0xf482 $B472 C7 B5                   ;12	Blue Lady - Walking (default random Townfolk)
-.word    bank3_Dialog_Conditions_Walking; 0xf484 $B474 92 B5                   ;13	Blue Lumberjack - Walking
-.word    bank3_Dialog_Conditions_Walking; 0xf486 $B476 92 B5                   ;14	Red Young Lad - Walking
-.word    bank3_Dialog_Conditions_Walking; 0xf488 $B478 92 B5                   ;15	Red Young Lad - Walking
-.word    bank3_Dialog_Conditions_Walking; 0xf48a $B47A 92 B5                   ;16	Blue Lady - Walking
-.word    bank3_Dialog_Conditions_Invisible_Dialog_Mirror; 0xf48c $B47C AE B5   ;17	Invisible Dialog (Mirror)
-.word    bank3_Dialog_Conditions_default; 0xf48e $B47E C7 B5                   ;18	Invisible Dialog ("Welcome" sign)
+.word    bank3_Dialog_Conditions_HealerLady_MagicLady ; 0xf478 $B468 7D B5      ;D	Red Lady - Idle (healing lady)
+.word    bank3_Dialog_Conditions_HealerLady_MagicLady ; 0xf47a $B46A 7D B5      ;E	Orange Old Woman - Idle (magic woman)
+.word    bank3_Dialog_Conditions_default ; 0xf47c $B46C C7 B5                   ;F	Blue Lumberjack - Walking (default random Townfolk)
+.word    bank3_Dialog_Conditions_default ; 0xf47e $B46E C7 B5                   ;10	Red Lady with Bowl - Walking (default random Townfolk)
+.word    bank3_Dialog_Conditions_default ; 0xf480 $B470 C7 B5                   ;11	Red Old Woman - Walking (default random Townfolk)
+.word    bank3_Dialog_Conditions_default ; 0xf482 $B472 C7 B5                   ;12	Blue Lady - Walking (default random Townfolk)
+.word    bank3_Dialog_Conditions_Walking ; 0xf484 $B474 92 B5                   ;13	Blue Lumberjack - Walking
+.word    bank3_Dialog_Conditions_Walking ; 0xf486 $B476 92 B5                   ;14	Red Young Lad - Walking
+.word    bank3_Dialog_Conditions_Walking ; 0xf488 $B478 92 B5                   ;15	Red Young Lad - Walking
+.word    bank3_Dialog_Conditions_Walking ; 0xf48a $B47A 92 B5                   ;16	Blue Lady - Walking
+.word    bank3_Dialog_Conditions_Invisible_Dialog_Mirror ; 0xf48c $B47C AE B5   ;17	Invisible Dialog (Mirror)
+.word    bank3_Dialog_Conditions_default ; 0xf48e $B47E C7 B5                   ;18	Invisible Dialog ("Welcome" sign)
 ; ---------------------------------------------------------------------------- ;
 bank3_Dialog_Routines_Set_text_pointer_according_to_Townfolk_type__R5:          ;
     LDA      #$00                      ; 0xf490 $B480 A9 00                    ; A = 00
@@ -4217,7 +4217,7 @@ LB541:                                                                          
     BNE      LB54B                     ; 0xf556 $B546 D0 03                    ;
     STY      $0749                     ; 0xf558 $B548 8C 49 07                 ; Current position of the Magic selector
 LB54B:                                                                          ;
-    JMP      bank3_Dialog_Conditions_default; 0xf55b $B54B 4C C7 B5                ;
+    JMP      bank3_Dialog_Conditions_default ; 0xf55b $B54B 4C C7 B5                ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Dialog_Conditions_Immobile:                                               ;
@@ -4228,7 +4228,7 @@ bank3_Dialog_Conditions_Immobile:                                               
     LDA      $0797,y                   ; 0xf564 $B554 B9 97 07                 ;
     ORA      bank3_Related_to_Collectable_Objects_conditions,x; 0xf567 $B557 1D 2B B4;
     STA      $0797,y                   ; 0xf56a $B55A 99 97 07                 ;
-    JMP      bank3_Dialog_Conditions_default; 0xf56d $B55D 4C C7 B5                ;
+    JMP      bank3_Dialog_Conditions_default ; 0xf56d $B55D 4C C7 B5                ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Dialog_Conditions_Idle:                                                   ;
@@ -4285,7 +4285,7 @@ bank3_Dialog_Conditions_Invisible_Dialog_Mirror:                                
     LDA      $0797,y                   ; 0xf5be $B5AE B9 97 07                 ;
     ORA      #$01                      ; 0xf5c1 $B5B1 09 01                    ; set  bits .... ...x
     STA      $0797,y                   ; 0xf5c3 $B5B3 99 97 07                 ;
-    JMP      bank3_Dialog_Conditions_default; 0xf5c6 $B5B6 4C C7 B5                ;
+    JMP      bank3_Dialog_Conditions_default ; 0xf5c6 $B5B6 4C C7 B5                ;
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank3_Dialog_Conditions_Ache_Bit_talker:                                        ;
@@ -4296,14 +4296,14 @@ bank3_Dialog_Conditions_Ache_Bit_talker:                                        
     STA      $05A5,x                   ; 0xf5d2 $B5C2 9D A5 05                 ;;town npc chat counter
     INC      $05                       ; 0xf5d5 $B5C5 E6 05                    ;
 bank3_Dialog_Conditions_default:                                                ;
-    LDA      L0000                     ; 0xf5d7 $B5C7 A5 00                    ;
+    LDA      $00                       ; 0xf5d7 $B5C7 A5 00                    ;
     LDX      $048C                     ; 0xf5d9 $B5C9 AE 8C 04                 ;
     BEQ      LB5D0                     ; 0xf5dc $B5CC F0 02                    ;
     LDA      #$0F                      ; 0xf5de $B5CE A9 0F                    ; A = 0F
 LB5D0:                                                                          ;
     ASL                                ; 0xf5e0 $B5D0 0A                       ;
     ASL                                ; 0xf5e1 $B5D1 0A                       ;
-    STA      L0000                     ; 0xf5e2 $B5D2 85 00                    ;
+    STA      $00                       ; 0xf5e2 $B5D2 85 00                    ;
     LDA      $056B                     ; 0xf5e4 $B5D4 AD 6B 05                 ; Town Code
     AND      #$03                      ; 0xf5e7 $B5D7 29 03                    ; keep bits .... ..xx
     CLC                                ; 0xf5e9 $B5D9 18                       ;
@@ -4319,8 +4319,8 @@ LB5E7:                                                                          
     BNE      bank3_At_this_point_A_is_the_dialog_index; 0xf5fc $B5EC D0 0A         ;
     LDA      bank3_related_to_dialog_indexes3,y; 0xf5fe $B5EE B9 DC A2             ;
     LDX      $05                       ; 0xf601 $B5F1 A6 05                    ;
-    BEQ      bank3_At_this_point_A_is_the_dialog_index; 0xf603 $B5F3 F0 03         ;
-    LDA      bank3_related_to_dialog_indexes4,y; 0xf605 $B5F5 B9 40 A3             ;
+    BEQ      bank3_At_this_point_A_is_the_dialog_index ; 0xf603 $B5F3 F0 03         ;
+    LDA      bank3_related_to_dialog_indexes4,y ; 0xf605 $B5F5 B9 40 A3             ;
 bank3_At_this_point_A_is_the_dialog_index:                                      ;
     ASL                                ; 0xf608 $B5F8 0A                       ;
     TAY                                ; 0xf609 $B5F9 A8                       ;
@@ -4400,7 +4400,7 @@ LB65E:                                                                          
 LB672:                                                                          ;
     LDA      $074C                     ; 0xf682 $B672 AD 4C 07                 ;; Dialog Type (00 - None, 01 - Level Up, 02 - Talking); * related to Raft Animation * (and other events, like spell learning)
     CMP      #$04                      ; 0xf685 $B675 C9 04                    ;
-    BEQ      bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2_duplicate; 0xf687 $B677 F0 A8;
+    BEQ      bank3_Dialog_Routines_advance_to_next_routine_in_this_table__R2_duplicate ; 0xf687 $B677 F0 A8;
     LDA      #$C0                      ; 0xf689 $B679 A9 C0                    ; A = C0
     STA      $074B                     ; 0xf68b $B67B 8D 4B 07                 ; Spell Flash Counter
     LDA      #$40                      ; 0xf68e $B67E A9 40                    ; A = 40
@@ -4438,11 +4438,11 @@ LB6A2:                                                                          
     BNE      LB672                     ; 0xf6c8 $B6B8 D0 B8                    ; if pressed, skip to $F672
 LB6BA:                                                                          ;
     LDA      $0566                     ; 0xf6ca $B6BA AD 66 05                 ; Delay between letters
-    BNE      bank3_Delay_counter_between_letters; 0xf6cd $B6BD D0 DF               ;
+    BNE      bank3_Delay_counter_between_letters ; 0xf6cd $B6BD D0 DF               ;
     INC      $0766                     ; 0xf6cf $B6BF EE 66 07                 ;; Dialog Flag (00-01)	wait for B button press; set when conversation occurs? Might prevent other ppu instruction
     LDX      #$F4                      ; 0xf6d2 $B6C2 A2 F4                    ; X = F4 (interline character)
     LDA      $0569                     ; 0xf6d4 $B6C4 AD 69 05                 ; 569,56A = pointer to next letter
-    STA      L0000                     ; 0xf6d7 $B6C7 85 00                    ;
+    STA      $00                       ; 0xf6d7 $B6C7 85 00                    ;
     LDA      $056A                     ; 0xf6d9 $B6C9 AD 6A 05                 ;; Pointer to letter 	; Low
     STA      $01                       ; 0xf6dc $B6CC 85 01                    ;
     LDY      #$00                      ; 0xf6de $B6CE A0 00                    ; Y = 00
@@ -4867,7 +4867,7 @@ LBF00:                                                                          
 ;     SEI                                ; 0xff80 $BF70 78                       ;
 ;     CLD                                ; 0xff81 $BF71 D8                       ;
 ;     LDX      #$00                      ; 0xff82 $BF72 A2 00                    ; X = 00
-;     STX      $2000                     ; 0xff84 $BF74 8E 00 20                 ;
+;     STX      PPU_CTRL                     ; 0xff84 $BF74 8E 00 20                 ;
 ;     INX                                ; 0xff87 $BF77 E8                       ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0xff88 $BF78 AD 02 20                 ;

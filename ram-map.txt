@@ -168,7 +168,7 @@ FE 	;does interesting effects when changed, perhaps involves palette?
 1D
 1E 	; Cursor position in Name Input Screen
 1F
-20,X 	; Enemy Condition
+20,X 	; Enemy Y position (high byte)
 27
 28
 29 	; Link's Y Position

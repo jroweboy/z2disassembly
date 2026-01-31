@@ -2377,7 +2377,7 @@ L9960:                                                                          
                                                                                ;
 ; ---------------------------------------------------------------------------- ;
 bank2_Leever_routines_Moving:                                                   ;
-    JSR      bank7_Simple_Horizontal_Movement; 0x997c $996C 20 B8 DE               ; Simple Horizontal Movement
+    JSR      bank7_Simple_Horizontal_Movement ; 0x997c $996C 20 B8 DE               ; Simple Horizontal Movement
     LDA      $0504,x                   ; 0x997f $996F BD 04 05                 ; Timer for Enemy AI
     BNE      L997B                     ; 0x9982 $9972 D0 07                    ;
     INC      $AF,x                     ; 0x9984 $9974 F6 AF                    ;; Various enemy state variables
@@ -4572,7 +4572,7 @@ LBF00:                                                                          
 ;     SEI                                ; 0xbf80 $BF70 78                       ;
 ;     CLD                                ; 0xbf81 $BF71 D8                       ;
 ;     LDX      #$00                      ; 0xbf82 $BF72 A2 00                    ; X = 00
-;     STX      $2000                     ; 0xbf84 $BF74 8E 00 20                 ;
+;     STX      PPU_CTRL                     ; 0xbf84 $BF74 8E 00 20                 ;
 ;     INX                                ; 0xbf87 $BF77 E8                       ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0xbf88 $BF78 AD 02 20                 ;

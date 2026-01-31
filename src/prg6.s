@@ -4212,7 +4212,7 @@ LBF00:                                                                          
 ;     SEI                                ; 0x1bf80 $BF70 78                      ;
 ;     CLD                                ; 0x1bf81 $BF71 D8                      ;
 ;     LDX      #$00                      ; 0x1bf82 $BF72 A2 00                   ;;X = #$00 0000_0000
-;     STX      $2000                     ; 0x1bf84 $BF74 8E 00 20                ;
+;     STX      PPU_CTRL                     ; 0x1bf84 $BF74 8E 00 20                ;
 ;     INX                                ; 0x1bf87 $BF77 E8                      ;
 ; LBF78:                                                                          ;
 ;     LDA      $2002                     ; 0x1bf88 $BF78 AD 02 20                ;
